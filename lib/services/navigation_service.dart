@@ -34,7 +34,7 @@ class NavigationService extends _NavigationServiceImpl {
     TransitionType transitionType,
   }) =>
       routeNames.forEach(
-        (path) => _router.define(
+        (path) => fluroRouter.define(
           path,
           handler: Handler(
             type: handlerType,
@@ -47,11 +47,11 @@ class NavigationService extends _NavigationServiceImpl {
   Route<dynamic> generator(RouteSettings routeSettings) {
     _routeDetails.pushRoute(routeSettings.name);
 
-    return _router.generator(routeSettings);
+    return fluroRouter.generator(routeSettings);
   }
 
   /// Prints the route tree so you can analyze it.
-  void printRouteTree() => _router.printTree();
+  void printRouteTree() => fluroRouter.printTree();
 
   @override
   NavigatorState get _currentState {
@@ -75,7 +75,7 @@ class NavigationServiceWithContext extends _NavigationServiceImpl {
     this._context,
     NavigationService service,
   )   : assert(_context != null, "Context can't be  null !"),
-        super(service._router, service._routeDetails);
+        super(service.fluroRouter, service._routeDetails);
 
   @override
   NavigatorState get _currentState => Navigator.of(_context);

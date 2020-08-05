@@ -1,10 +1,11 @@
 part of 'navigation_service.dart';
 
 abstract class _NavigationServiceImpl {
-  final Router _router;
+  /// [Router] object associated with this NavigationService
+  final Router fluroRouter;
   final RouteDetails _routeDetails;
 
-  _NavigationServiceImpl(this._router, this._routeDetails);
+  _NavigationServiceImpl(this.fluroRouter, this._routeDetails);
 
   NavigatorState get _currentState;
 
@@ -50,7 +51,7 @@ abstract class _NavigationServiceImpl {
 
   /// Finds a defined [AppRoute] for the path value. If no [AppRoute] definition was found
   /// then function will return null.
-  AppRouteMatch match(String path) => _router.match(path);
+  AppRouteMatch match(String path) => fluroRouter.match(path);
 
   ///
   RouteMatch matchRoute(String path,
@@ -58,7 +59,7 @@ abstract class _NavigationServiceImpl {
           TransitionType transitionType,
           Duration transitionDuration = const Duration(milliseconds: 250),
           RouteTransitionsBuilder transitionsBuilder}) =>
-      _router.matchRoute(
+      fluroRouter.matchRoute(
         _currentContext,
         path,
         routeSettings: routeSettings,

@@ -28,6 +28,26 @@ MaterialApp(
 );
 ```
 
+Defining routes
+``` dart
+NavigationService.instance.defineRoutes(
+    ['/home', '/search', '/profile'],
+    routeScreen: (route, params) {
+      switch (route) {
+        case '/home':
+          return HomeScreen();
+        case '/search':
+          return SearchScreen();
+        case '/profile':
+          return ProfileScreen();
+        default:
+          return HomeScreen();
+      }
+    },
+    transitionType: TransitionType.fadeIn,
+  );
+```
+
 Using NavigationService to navigate
 ``` dart
 // Navigate to next page

@@ -5,10 +5,11 @@ An advanced naviration service implementation using [fluro](https://pub.dev/pack
 ## Getting Started
 
 ### Installation
-```
+``` yaml
 dependencies:
   ...
-  fluro_navigation_service: ^0.0.1
+  fluro_navigation_service:
+    git: https://github.com/Akash98Sky/fluro_navigation_service.git
 ```
 
 ### Using this package
